@@ -77,7 +77,7 @@ export default function ProjectGallery() {
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
-            transition={{ delay: index * 0.2, duration: 0.6, ease: 'easeOut' }}
+            transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
             onMouseEnter={() => setHoveredProject(index)}
             onMouseLeave={() => setHoveredProject(null)}
@@ -85,7 +85,7 @@ export default function ProjectGallery() {
             tabIndex={0}
             aria-label={`View ${project.title} project details`}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 setHoveredProject(hoveredProject === index ? null : index);
               }
             }}
@@ -106,8 +106,8 @@ export default function ProjectGallery() {
             <motion.div
               className={`absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-end p-6 transition-all duration-500 ${
                 hoveredProject === index
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
               }`}
             >
               <motion.h3

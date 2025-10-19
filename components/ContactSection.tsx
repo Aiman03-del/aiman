@@ -7,10 +7,10 @@ import { Button } from './ui/button';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,7 +22,7 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   const fadeInUp = (delay = 0) => ({
@@ -43,7 +43,7 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp(0)}
-          transition={{ delay: 0, duration: 0.6, ease: 'easeOut' }}
+          transition={{ delay: 0, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <div className="inline-block border border-gray-400 rounded-full px-6 py-2 bg-white shadow-sm">
@@ -59,7 +59,7 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp(0.2)}
-          transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
+          transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">
@@ -88,7 +88,7 @@ export default function ContactSection() {
             initial="hidden"
             whileInView="visible"
             variants={fadeInUp(0.2)}
-            transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             {/* Contact Info */}
@@ -97,9 +97,9 @@ export default function ContactSection() {
               
               <div className="space-y-6">
                 {[
-                  { icon: Mail, label: 'Email', value: 'ausiaam83@gmail.com' },
-                  { icon: Phone, label: 'Phone', value: '+8801538288739' },
-                  { icon: MapPin, label: 'Location', value: 'Mirsarai, Chattogram' }
+                  { icon: Mail, label: "Email", value: "ausiaam83@gmail.com" },
+                  { icon: Phone, label: "Phone", value: "+8801538288739" },
+                  { icon: MapPin, label: "Location", value: "Mirsarai, Chattogram" }
                 ].map((info, index) => (
                   <motion.div
                     key={index}
@@ -124,9 +124,9 @@ export default function ContactSection() {
               <h4 className="text-xl font-serif font-semibold text-black mb-6">Follow My Journey</h4>
               <div className="flex space-x-4">
                 {[
-                  { icon: Twitter, label: 'Twitter', href: '#' },
-                  { icon: Linkedin, label: 'LinkedIn', href: '#' },
-                  { icon: Github, label: 'GitHub', href: '#' }
+                  { icon: Twitter, label: "Twitter", href: "#" },
+                  { icon: Linkedin, label: "LinkedIn", href: "#" },
+                  { icon: Github, label: "GitHub", href: "#" }
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -154,31 +154,31 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                {['name', 'email'].map((field, i) => (
+                {["name", "email"].map((field, i) => (
                   <motion.div key={field} whileFocus={{ scale: 1.02 }}>
                     <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
                       {field} *
                     </label>
                     <input
-                      type={field === 'email' ? 'email' : 'text'}
+                      type={field === "email" ? "email" : "text"}
                       id={field}
                       name={field}
                       value={formData[field as keyof typeof formData]}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-white border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
-                      placeholder={field === 'email' ? 'you@example.com' : 'Your full name'}
+                      placeholder={field === "email" ? "you@example.com" : "Your full name"}
                     />
                   </motion.div>
                 ))}
               </div>
 
-              {['subject', 'message'].map((field, i) => (
+              {["subject", "message"].map((field, i) => (
                 <motion.div key={field} whileFocus={{ scale: 1.02 }}>
                   <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
                     {field} *
                   </label>
-                  {field === 'message' ? (
+                  {field === "message" ? (
                     <textarea
                       id={field}
                       name={field}
