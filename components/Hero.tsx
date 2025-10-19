@@ -202,14 +202,14 @@ export default function Hero() {
               A passionate developer blending modern tech with timeless design.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-              <Button size="lg" variant="default" className="w-full sm:w-auto">
+            <div className="flex flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Button size="lg" variant="default" className="flex-1 sm:flex-none">
                 <a href="#projects">
                   View My Work
                 </a>
               </Button>
 
-              <Button size="lg" variant="outline" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="flex-1 sm:flex-none">
                 <a href="#contact">
                   Get In Touch
                 </a>
