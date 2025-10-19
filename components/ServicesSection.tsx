@@ -232,7 +232,7 @@ export default function ServicesSection() {
             Ready to Start Your Project?
           </h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's discuss your requirements and create something amazing together. 
+            Let&apos;s discuss your requirements and create something amazing together. 
             All projects include free consultation and detailed project planning.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

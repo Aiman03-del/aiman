@@ -90,7 +90,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 3.0 }}
         >
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-black">
-            Hi, I'm Aiman
+            Hi, I&apos;m Aiman
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-700 font-light">
             A passionate developer blending modern tech with timeless design.

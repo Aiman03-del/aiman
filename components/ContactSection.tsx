@@ -25,7 +25,7 @@ export default function ContactSection() {
     console.log("Form submitted:", formData);
   };
 
-  const fadeInUp = (delay = 0) => ({
+  const fadeInUp = () => ({
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
@@ -42,7 +42,7 @@ export default function ContactSection() {
           className="text-center mb-12"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp(0)}
+          variants={fadeInUp()}
           transition={{ delay: 0, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
@@ -58,7 +58,7 @@ export default function ContactSection() {
           className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp(0.2)}
+          variants={fadeInUp()}
           transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
@@ -87,7 +87,7 @@ export default function ContactSection() {
             className="space-y-12"
             initial="hidden"
             whileInView="visible"
-            variants={fadeInUp(0.2)}
+            variants={fadeInUp()}
             transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
@@ -146,7 +146,7 @@ export default function ContactSection() {
             className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
             initial="hidden"
             whileInView="visible"
-            variants={fadeInUp(0.4)}
+            variants={fadeInUp()}
             transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
@@ -154,7 +154,7 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                {["name", "email"].map((field, i) => (
+                {["name", "email"].map((field) => (
                   <motion.div key={field} whileFocus={{ scale: 1.02 }}>
                     <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
                       {field} *
@@ -173,7 +173,7 @@ export default function ContactSection() {
                 ))}
               </div>
 
-              {["subject", "message"].map((field, i) => (
+              {["subject", "message"].map((field) => (
                 <motion.div key={field} whileFocus={{ scale: 1.02 }}>
                   <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
                     {field} *
@@ -222,7 +222,7 @@ export default function ContactSection() {
           className="text-center mt-20"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp(0.5)}
+          variants={fadeInUp()}
           transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >

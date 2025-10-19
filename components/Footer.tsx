@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
             <p className="text-black mb-4">
               A passionate developer creating amazing digital experiences. 
-              Let's build something great together.
+              Let&apos;s build something great together.
             </p>
             <div className="flex space-x-4">
               <a href="https://x.com/au_siaam" className="text-black hover:text-gray-600 transition duration-300">

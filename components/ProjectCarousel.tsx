@@ -1,34 +1,28 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { projects } from '../data/projects';
 
 export default function ProjectCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
-    setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const prevSlide = () => {
-    setDirection(-1);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
   };
 
   const goToSlide = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
   const handleCardClick = (projectIndex: number) => {
-    setDirection(projectIndex > currentIndex ? 1 : -1);
     setCurrentIndex(projectIndex);
   };
 
@@ -37,12 +31,11 @@ export default function ProjectCarousel() {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, projects.length]);
+  }, [isAutoPlaying]);
 
   // Get the three visible projects (previous, current, next)
   const getVisibleProjects = () => {
@@ -87,7 +80,7 @@ export default function ProjectCarousel() {
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
         <div className="relative w-full h-full flex items-center justify-center gap-8">
-          {visibleProjects.map(({ project, position }, index) => (
+          {visibleProjects.map(({ project, position }) => (
             <motion.div
               key={`${project.id}-${position}`}
               className="flex-shrink-0"
