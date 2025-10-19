@@ -30,7 +30,7 @@ export default function ProjectDetails({ projectId, onBack }: ProjectDetailsProp
     <section 
       className="min-h-screen py-20 transition-colors duration-300"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}

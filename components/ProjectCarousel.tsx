@@ -52,7 +52,7 @@ export default function ProjectCarousel() {
   const visibleProjects = getVisibleProjects();
 
   return (
-    <div className="w-full max-w-8xl mx-auto px-8 py-12">
+    <div className="w-full max-w-7xl mx-auto px-6 py-20">
       <div className="flex items-center justify-between mb-12">
         <h2 className="text-3xl font-bold">
           Featured Projects

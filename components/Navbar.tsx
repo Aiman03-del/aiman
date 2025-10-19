@@ -52,7 +52,7 @@ export default function Navbar() {
         color: 'var(--foreground)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo - Left */}
           <div className="flex items-center">

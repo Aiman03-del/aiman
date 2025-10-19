@@ -16,12 +16,12 @@ export default function ProjectsContainer() {
   };
 
   return (
-    <>
+    <div className="w-full">
       <ProjectGallery onProjectClick={handleProjectClick} />
       <ProjectModal 
         projectId={selectedProject} 
         onClose={handleCloseModal} 
       />
-    </>
+    </div>
   );
 }

@@ -42,6 +42,10 @@ export default function RootLayout({
       <head>
         <title>Aiman - Developer Portfolio</title>
         <meta name="description" content="A passionate developer creating amazing digital experiences" />
+        <link rel="icon" href="/images/favicon.ico" />
+        <link rel="apple-touch-icon" href="/images/favicon.ico" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
         className={`${inter.variable} ${playfairDisplay.variable} antialiased transition-colors duration-300`}

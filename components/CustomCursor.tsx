@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -17,10 +18,25 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // Check if device is mobile/touch device
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 1024; // Increased to 1024px
+      const isMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isTablet = /iPad|Android/i.test(navigator.userAgent) && 'ontouchstart' in window;
+      
+      setIsMobile(isTouchDevice || isSmallScreen || isMobileUserAgent || isTablet);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted || isMobile) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
@@ -65,13 +81,13 @@ export default function CustomCursor() {
       window.removeEventListener('mouseleave', handleMouseLeave);
       observer.disconnect();
     };
-  }, [cursorX, cursorY, isMounted]);
+  }, [cursorX, cursorY, isMounted, isMobile]);
 
-  if (!isMounted) return null;
+  if (!isMounted || isMobile) return null;
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference"
+      className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
