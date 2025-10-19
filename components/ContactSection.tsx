@@ -453,7 +453,7 @@ export default function ContactSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <p className="text-green-800 text-sm">
-                    ✅ Message sent successfully! I'll get back to you soon.
+                    ✅ Message sent successfully! I&apos;ll get back to you soon.
                   </p>
                 </motion.div>
               )}

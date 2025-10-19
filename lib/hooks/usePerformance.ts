@@ -45,7 +45,7 @@ export function usePerformance() {
       // Observe FID
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry: any) => {
+        entries.forEach((entry: PerformanceEntry & { processingStart: number; startTime: number }) => {
           setMetrics(prev => prev ? { ...prev, firstInputDelay: entry.processingStart - entry.startTime } : null);
         });
       });
@@ -55,8 +55,8 @@ export function usePerformance() {
       let clsValue = 0;
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!(entry as any).hadRecentInput) {
-            clsValue += (entry as any).value;
+          if (!(entry as PerformanceEntry & { hadRecentInput: boolean; value: number }).hadRecentInput) {
+            clsValue += (entry as PerformanceEntry & { hadRecentInput: boolean; value: number }).value;
             setMetrics(prev => prev ? { ...prev, cumulativeLayoutShift: clsValue } : null);
           }
         }

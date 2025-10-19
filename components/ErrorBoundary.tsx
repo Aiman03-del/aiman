@@ -80,7 +80,7 @@ class ErrorBoundary extends Component<Props, State> {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              We're sorry, but something unexpected happened. 
+              We&apos;re sorry, but something unexpected happened. 
               Please try refreshing the page.
             </motion.p>
             
