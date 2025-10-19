@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Check, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { initializeEmailJS, sendEmail } from '../lib/emailjs';
 
@@ -447,26 +447,26 @@ export default function ContactSection() {
               {/* Success/Error Messages */}
               {submitStatus === 'success' && (
                 <motion.div
-                  className="p-4 rounded-lg bg-green-100 border border-green-300"
+                  className="p-4 rounded-lg  border"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <p className="text-green-800 text-sm">
-                    ✅ Message sent successfully! I&apos;ll get back to you soon.
+                  <p className=" text-sm">
+                    <Check size={16} /> Message sent successfully! I&apos;ll get back to you soon.
                   </p>
                 </motion.div>
               )}
               
               {submitStatus === 'error' && (
                 <motion.div
-                  className="p-4 rounded-lg bg-red-100 border border-red-300"
+                  className="p-4 rounded-lg border"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   <p className="text-red-800 text-sm">
-                    ❌ Something went wrong. Please try again or contact me directly.
+                    <X size={16} /> Something went wrong. Please try again or contact me directly.
                   </p>
                 </motion.div>
               )}

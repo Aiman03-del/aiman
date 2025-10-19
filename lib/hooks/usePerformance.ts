@@ -45,8 +45,9 @@ export function usePerformance() {
       // Observe FID
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry: PerformanceEntry & { processingStart: number; startTime: number }) => {
-          setMetrics(prev => prev ? { ...prev, firstInputDelay: entry.processingStart - entry.startTime } : null);
+        entries.forEach((entry) => {
+          const fidEntry = entry as PerformanceEntry & { processingStart: number; startTime: number };
+          setMetrics(prev => prev ? { ...prev, firstInputDelay: fidEntry.processingStart - fidEntry.startTime } : null);
         });
       });
       fidObserver.observe({ entryTypes: ['first-input'] });
@@ -55,8 +56,9 @@ export function usePerformance() {
       let clsValue = 0;
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!(entry as PerformanceEntry & { hadRecentInput: boolean; value: number }).hadRecentInput) {
-            clsValue += (entry as PerformanceEntry & { hadRecentInput: boolean; value: number }).value;
+          const clsEntry = entry as PerformanceEntry & { hadRecentInput: boolean; value: number };
+          if (!clsEntry.hadRecentInput) {
+            clsValue += clsEntry.value;
             setMetrics(prev => prev ? { ...prev, cumulativeLayoutShift: clsValue } : null);
           }
         }
