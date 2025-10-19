@@ -25,17 +25,17 @@ export default function Footer() {
         color: 'var(--foreground)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="col-span-2">
-            <div className="mb-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <div className="mb-4">
               {mounted && (
                 <Image
                   src={theme === 'light' ? "/images/logo.png" : "/images/light-logo.png"}
                   alt="Aiman Logo"
                   width={100}
                   height={100}
-                  className="w-30 h-30 hover:opacity-80 transition-opacity duration-300"
+                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 hover:opacity-80 transition-opacity duration-300"
                   quality={100}
                 />
               )}
@@ -45,13 +45,13 @@ export default function Footer() {
                   alt="Aiman Logo"
                   width={100}
                   height={100}
-                  className="w-30 h-30 hover:opacity-80 transition-opacity duration-300"
+                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 hover:opacity-80 transition-opacity duration-300"
                   quality={100}
                 />
               )}
             </div>
             <p 
-              className="mb-4 opacity-70"
+              className="mb-6 text-sm sm:text-base opacity-70 leading-relaxed"
               style={{ color: 'var(--foreground)' }}
             >
               A passionate developer creating amazing digital experiences. 
@@ -60,31 +60,31 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a 
                 href="https://x.com/au_siaam" 
-                className="hover:opacity-70 transition duration-300"
+                className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
               >
-                <Twitter className="h-6 w-6" />
+                <Twitter className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a 
                 href="https://www.linkedin.com/in/au-siaam-721011204/" 
-                className="hover:opacity-70 transition duration-300"
+                className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a 
                 href="https://github.com/Aiman03-del" 
-                className="hover:opacity-70 transition duration-300"
+                className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
             </div>
           </div>
           
           <div>
             <h4 
-              className="text-lg font-semibold mb-4"
+              className="text-base sm:text-lg font-semibold mb-3 sm:mb-4"
               style={{ color: 'var(--foreground)' }}
             >
               Quick Links
@@ -93,7 +93,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/" 
-                  className="hover:opacity-70 transition duration-300"
+                  className="text-sm sm:text-base hover:opacity-70 transition duration-300 block py-1"
                   style={{ color: 'var(--foreground)' }}
                 >
                   Home
@@ -102,7 +102,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/about" 
-                  className="hover:opacity-70 transition duration-300"
+                  className="text-sm sm:text-base hover:opacity-70 transition duration-300 block py-1"
                   style={{ color: 'var(--foreground)' }}
                 >
                   About
@@ -111,7 +111,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/projects" 
-                  className="hover:opacity-70 transition duration-300"
+                  className="text-sm sm:text-base hover:opacity-70 transition duration-300 block py-1"
                   style={{ color: 'var(--foreground)' }}
                 >
                   Projects
@@ -120,7 +120,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/services" 
-                  className="hover:opacity-70 transition duration-300"
+                  className="text-sm sm:text-base hover:opacity-70 transition duration-300 block py-1"
                   style={{ color: 'var(--foreground)' }}
                 >
                   Services
@@ -129,7 +129,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/contact" 
-                  className="hover:opacity-70 transition duration-300"
+                  className="text-sm sm:text-base hover:opacity-70 transition duration-300 block py-1"
                   style={{ color: 'var(--foreground)' }}
                 >
                   Contact
@@ -140,7 +140,7 @@ export default function Footer() {
           
           <div>
             <h4 
-              className="text-lg font-semibold mb-4"
+              className="text-base sm:text-lg font-semibold mb-3 sm:mb-4"
               style={{ color: 'var(--foreground)' }}
             >
               Contact Info
@@ -149,18 +149,21 @@ export default function Footer() {
               className="space-y-2 opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
-              <p>Email: aiman@example.com</p>
-              <p>Phone: +1 (555) 123-4567</p>
-              <p>Location: Your City, Country</p>
+              <p className="text-sm sm:text-base">Email: aiman@example.com</p>
+              <p className="text-sm sm:text-base">Phone: +1 (555) 123-4567</p>
+              <p className="text-sm sm:text-base">Location: Your City, Country</p>
             </div>
           </div>
         </div>
         
         <div 
-          className="mt-8 pt-8 text-center opacity-70"
-          style={{ color: 'var(--foreground)' }}
+          className="mt-6 sm:mt-8 pt-6 sm:pt-8 text-center opacity-70 border-t"
+          style={{ 
+            color: 'var(--foreground)',
+            borderColor: 'var(--foreground)'
+          }}
         >
-          <p>&copy; 2025 Aiman. All rights reserved.</p>
+          <p className="text-xs sm:text-sm">&copy; 2025 Aiman. All rights reserved.</p>
         </div>
       </div>
     </footer>

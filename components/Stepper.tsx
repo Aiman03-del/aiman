@@ -59,7 +59,9 @@ export default function Stepper({ sections }: StepperProps) {
   };
 
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
+    <>
+      {/* Desktop Vertical Stepper */}
+      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
 
       {/* Previous Step Button - North (Above) */}
       {activeSection > 0 && (
@@ -256,6 +258,56 @@ export default function Stepper({ sections }: StepperProps) {
           </motion.div>
         </motion.button>
       )}
-    </div>
+      </div>
+
+      {/* Mobile Horizontal Stepper */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 lg:hidden">
+        <div 
+          className="flex items-center gap-2 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border transition-colors duration-300"
+          style={{
+            backgroundColor: 'var(--background)',
+            borderColor: 'var(--foreground)',
+            opacity: 0.9
+          }}
+        >
+          {sections.map((section, index) => (
+            <motion.button
+              key={section}
+              onClick={() => scrollToSection(section)}
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                activeSection === index
+                  ? 'scale-110'
+                  : 'hover:scale-105'
+              }`}
+              style={{
+                backgroundColor: activeSection === index ? 'var(--foreground)' : 'var(--background)',
+                color: activeSection === index ? 'var(--background)' : 'var(--foreground)',
+                border: `1px solid var(--foreground)`,
+                opacity: activeSection === index ? 1 : 0.7
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <motion.div
+                key={`mobile-${section}-${index}`}
+                initial={{ scale: 0, rotate: -90 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                className="w-5 h-5 flex items-center justify-center"
+                style={{
+                  color: activeSection === index ? 'var(--background)' : 'var(--foreground)'
+                }}
+              >
+                {getIcon(section, index)}
+              </motion.div>
+            </motion.button>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

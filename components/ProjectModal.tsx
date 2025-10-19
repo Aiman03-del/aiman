@@ -55,7 +55,11 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
           
           {/* Modal Content */}
           <motion.div
-            className="relative bg-white dark:bg-black rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="relative rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transition-colors duration-300"
+            style={{
+              backgroundColor: 'var(--background)',
+              color: 'var(--foreground)'
+            }}
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -64,9 +68,27 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="absolute top-4 right-4 z-10 p-3 rounded-full transition-all duration-300 shadow-lg border"
+              style={{
+                color: 'var(--foreground)',
+                backgroundColor: 'var(--background)',
+                borderColor: 'var(--foreground)',
+                opacity: 0.9
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--foreground)';
+                e.currentTarget.style.color = 'var(--background)';
+                e.currentTarget.style.opacity = '1';
+                e.currentTarget.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--background)';
+                e.currentTarget.style.color = 'var(--foreground)';
+                e.currentTarget.style.opacity = '0.9';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
             >
-              <X className="h-6 w-6 text-black dark:text-white" />
+              <X className="h-6 w-6" />
             </button>
 
             {/* Project Image */}
@@ -82,16 +104,17 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 md:p-8 text-black dark:text-white">
+            <div className="p-6 md:p-8">
               {/* Project Header */}
               <div className="mb-6">
                 <h1 
-                  className="text-3xl md:text-4xl font-serif font-bold mb-4 text-black dark:text-white"
+                  className="text-3xl md:text-4xl font-serif font-bold mb-4"
+                  style={{ color: 'var(--foreground)' }}
                 >
                   {project.title}
                 </h1>
                 
-                <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-black dark:text-white">
+                <div className="flex flex-wrap items-center gap-4 mb-4 text-sm" style={{ color: 'var(--foreground)' }}>
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
                     <span>2024</span>
@@ -103,7 +126,8 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
                 </div>
 
                 <p 
-                  className="text-lg leading-relaxed text-black dark:text-white"
+                  className="text-lg leading-relaxed"
+                  style={{ color: 'var(--foreground)' }}
                 >
                   {project.description}
                 </p>
@@ -112,7 +136,8 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
               {/* Technologies */}
               <div className="mb-6">
                 <h3 
-                  className="text-xl font-semibold mb-4 text-black dark:text-white"
+                  className="text-xl font-semibold mb-4"
+                  style={{ color: 'var(--foreground)' }}
                 >
                   Technologies Used
                 </h3>
@@ -120,7 +145,13 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-2 rounded-lg text-sm font-medium bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                      className="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 border"
+                      style={{
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--foreground)',
+                        borderColor: 'var(--foreground)',
+                        opacity: 0.8
+                      }}
                     >
                       {tech}
                     </span>

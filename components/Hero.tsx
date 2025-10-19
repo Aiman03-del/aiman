@@ -8,6 +8,8 @@ import { useState, useEffect } from 'react';
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [showContent, setShowContent] = useState(false);
   const fullText = "Hi, I'm Aiman";
   const typingSpeed = 100; // milliseconds per character
   const startDelay = 3500; // Start typing after 3.5 seconds to sync with existing animations
@@ -30,6 +32,19 @@ export default function Hero() {
 
     return () => clearTimeout(startTimer);
   }, []);
+
+  // Show content after image loads
+  useEffect(() => {
+    if (imageLoaded) {
+      // Dispatch custom event for Navbar
+      window.dispatchEvent(new CustomEvent('heroImageLoaded'));
+      
+      const timer = setTimeout(() => {
+        setShowContent(true);
+      }, 500); // Small delay after image loads
+      return () => clearTimeout(timer);
+    }
+  }, [imageLoaded]);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -98,6 +113,7 @@ export default function Hero() {
                   quality={100}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   priority
+                  onLoad={() => setImageLoaded(true)}
                 />
               </motion.div>
 
@@ -146,40 +162,53 @@ export default function Hero() {
         </div>
 
         {/* Bottom Content */}
-        <motion.div
-          className="text-center mt-12 sm:mt-16 md:mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 3.0 }}
-        >
-          <h1 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-3 sm:mb-4"
-            style={{ color: 'var(--foreground)' }}
+        {!showContent ? (
+          // Loading state
+          <motion.div
+            className="text-center mt-12 sm:mt-16 md:mt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            {displayedText}
-            <span className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
-          </h1>
-          <p 
-            className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto font-light opacity-70 px-4"
-            style={{ color: 'var(--foreground)' }}
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            className="text-center mt-12 sm:mt-16 md:mt-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            A passionate developer blending modern tech with timeless design.
-          </p>
+            <h1 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-3 sm:mb-4"
+              style={{ color: 'var(--foreground)' }}
+            >
+              {displayedText}
+              <span className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
+            </h1>
+            <p 
+              className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto font-light opacity-70 px-4"
+              style={{ color: 'var(--foreground)' }}
+            >
+              A passionate developer blending modern tech with timeless design.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <Button size="lg" variant="default" className="w-full sm:w-auto">
-              <a href="#projects">
-                View My Work
-              </a>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Button size="lg" variant="default" className="w-full sm:w-auto">
+                <a href="#projects">
+                  View My Work
+                </a>
+              </Button>
 
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              <a href="#contact">
-                Get In Touch
-              </a>
-            </Button>
-          </div>
-        </motion.div>
+              <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                <a href="#contact">
+                  Get In Touch
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

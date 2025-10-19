@@ -12,6 +12,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
   
   // Only use theme after component is mounted to avoid hydration issues
   const themeContext = useTheme();
@@ -20,6 +21,26 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Listen for Hero image load event
+  useEffect(() => {
+    const handleHeroImageLoad = () => {
+      setShowNavbar(true);
+    };
+
+    // Check if Hero image is already loaded
+    const heroImage = document.querySelector('img[alt="Aiman - Developer"]') as HTMLImageElement;
+    if (heroImage && heroImage.complete) {
+      setShowNavbar(true);
+    } else {
+      // Listen for image load event
+      window.addEventListener('heroImageLoaded', handleHeroImageLoad);
+    }
+
+    return () => {
+      window.removeEventListener('heroImageLoaded', handleHeroImageLoad);
+    };
   }, []);
 
   // Close modal when clicking outside or pressing escape
@@ -44,18 +65,25 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
+  if (!showNavbar) {
+    return null;
+  }
+
   return (
-    <nav 
-      className="shadow-lg fixed w-full top-0 z-50 transition-colors duration-300"
+    <motion.nav 
+      className="pb-2 shadow-lg fixed w-full top-0 z-50 transition-colors duration-300"
       style={{
         backgroundColor: 'var(--background)',
         color: 'var(--foreground)'
       }}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
+        <div className="grid grid-cols-3 items-center h-16">
           {/* Logo - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-start">
             <Link href="/" className="flex items-center" data-cursor-hover>
               {mounted && (
                 <Image
@@ -83,7 +111,7 @@ export default function Navbar() {
           </div>
           
           {/* Menu button - Center */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             {/* Menu toggle button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -120,7 +148,7 @@ export default function Navbar() {
           </div>
           
           {/* Theme toggle and My Resume - Right */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-end space-x-4">
             {/* Theme Toggle Button */}
             <motion.button
               onClick={toggleTheme}
@@ -292,6 +320,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
