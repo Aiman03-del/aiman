@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,17 +40,18 @@ export default function Navbar() {
           {/* Logo - Left */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center" data-cursor-hover>
-              <div className="text-4xl font-black text-black hover:text-gray-600 transition-all duration-500 group font-mono tracking-wider relative">
-                <span className="inline-block transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 animate-pulse bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent drop-shadow-lg">A</span>
-                <span className="inline-block transform group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300 animate-bounce delay-100 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent drop-shadow-lg">i</span>
-                <span className="inline-block transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 animate-pulse delay-200 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent drop-shadow-lg">m</span>
-                <span className="inline-block transform group-hover:scale-125 group-hover:-rotate-12 transition-all duration-300 animate-bounce delay-300 bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent drop-shadow-lg">a</span>
-                <span className="inline-block transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 animate-pulse delay-400 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent drop-shadow-lg">n</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-              </div>
+              <Image
+                src="/images/logo.png"
+                alt="Aiman Logo"
+                width={80}
+                height={80}
+                className="w-20 h-20 hover:opacity-80 transition-opacity duration-300"
+                quality={100}
+                priority
+              />
             </Link>
           </div>
-
+          
           {/* Menu toggle button - Center */}
           <div className="flex items-center">
             <motion.button
@@ -84,18 +86,18 @@ export default function Navbar() {
               </div>
             </motion.button>
           </div>
-
+          
           {/* My Resume - Right */}
           <div className="flex items-center">
             <Button asChild variant="default" size="sm">
-              <a
-                href="https://drive.google.com/file/d/1fQ1pCAnayziyGm7ad3CIwDZEMXlrWmqq/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-hover
-              >
-                My Resume
-              </a>
+            <a 
+              href="https://drive.google.com/file/d/1fQ1pCAnayziyGm7ad3CIwDZEMXlrWmqq/view?usp=sharing" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              data-cursor-hover
+            >
+              My Resume
+            </a>
             </Button>
           </div>
         </div>
@@ -103,7 +105,7 @@ export default function Navbar() {
         {/* Full Screen Modal - All devices */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
+            <motion.div 
               ref={modalRef}
               className="fixed inset-0 z-50 bg-white"
               initial={{ opacity: 0 }}
@@ -112,7 +114,7 @@ export default function Navbar() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={() => setIsMenuOpen(false)}
             >
-              <motion.div
+              <motion.div 
                 className="flex flex-col items-center justify-center h-full space-y-8 relative"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -131,11 +133,11 @@ export default function Navbar() {
                 >
                   <X className="h-6 w-6" />
                 </motion.button>
-                <motion.a
-                  href="#home"
+                <motion.a 
+                  href="#home" 
                   onClick={() => setIsMenuOpen(false)}
                   className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
-                  whileHover={{
+                  whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
                   }}
@@ -146,11 +148,11 @@ export default function Navbar() {
                 >
                   Home
                 </motion.a>
-                <motion.a
-                  href="#about"
+                <motion.a 
+                  href="#about" 
                   onClick={() => setIsMenuOpen(false)}
                   className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
-                  whileHover={{
+                  whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
                   }}
@@ -161,11 +163,11 @@ export default function Navbar() {
                 >
                   About
                 </motion.a>
-                <motion.a
-                  href="#projects"
+                <motion.a 
+                  href="#projects" 
                   onClick={() => setIsMenuOpen(false)}
                   className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
-                  whileHover={{
+                  whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
                   }}
@@ -176,11 +178,11 @@ export default function Navbar() {
                 >
                   Projects
                 </motion.a>
-                <motion.a
+                <motion.a 
                   href="#services"
                   onClick={() => setIsMenuOpen(false)}
                   className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
-                  whileHover={{
+                  whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
                   }}

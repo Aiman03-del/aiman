@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Twitter, Linkedin, Github } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,19 +8,28 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Aiman</h3>
+            <div className="mb-2">
+              <Image
+                src="/images/logo.png"
+                alt="Aiman Logo"
+                width={100}
+                height={100}
+                className="w-30 h-30 hover:opacity-80 transition-opacity duration-300"
+                quality={100}
+              />
+            </div>
             <p className="text-black mb-4">
               A passionate developer creating amazing digital experiences. 
               Let's build something great together.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-black hover:text-gray-600 transition duration-300">
+              <a href="https://x.com/au_siaam" className="text-black hover:text-gray-600 transition duration-300">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="text-black hover:text-gray-600 transition duration-300">
+              <a href="https://www.linkedin.com/in/au-siaam-721011204/" className="text-black hover:text-gray-600 transition duration-300">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="text-black hover:text-gray-600 transition duration-300">
+              <a href="https://github.com/Aiman03-del" className="text-black hover:text-gray-600 transition duration-300">
                 <Github className="h-6 w-6" />
               </a>
             </div>

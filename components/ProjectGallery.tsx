@@ -68,11 +68,11 @@ export default function ProjectGallery() {
       </div>
 
       {/* Project Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
-            className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg"
+            className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             custom={index}
             variants={cardVariants}
             initial="hidden"
@@ -81,27 +81,37 @@ export default function ProjectGallery() {
             viewport={{ once: true }}
             onMouseEnter={() => setHoveredProject(index)}
             onMouseLeave={() => setHoveredProject(null)}
+            role="button"
+            tabIndex={0}
+            aria-label={`View ${project.title} project details`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                setHoveredProject(hoveredProject === index ? null : index);
+              }
+            }}
           >
             {/* Project Image */}
-            <div className="relative h-80 w-full">
+            <div className="relative h-80 w-full overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={index < 2}
               />
             </div>
 
             {/* Overlay with Animation */}
             <motion.div
-              className={`absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end p-6 transition-all duration-500 ${
+              className={`absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-end p-6 transition-all duration-500 ${
                 hoveredProject === index
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
               }`}
             >
               <motion.h3
-                className="text-2xl font-bold text-white mb-3"
+                className="text-2xl font-bold text-white mb-3 leading-tight"
                 initial={{ y: 20, opacity: 0 }}
                 animate={
                   hoveredProject === index
@@ -113,7 +123,7 @@ export default function ProjectGallery() {
               </motion.h3>
 
               <motion.p
-                className="text-gray-300 mb-4 text-sm"
+                className="text-gray-200 mb-4 text-sm leading-relaxed line-clamp-3"
                 initial={{ y: 20, opacity: 0 }}
                 animate={
                   hoveredProject === index
@@ -133,19 +143,24 @@ export default function ProjectGallery() {
                     : {}
                 }
               >
-                {project.technologies.map((tech, techIndex) => (
+                {project.technologies.slice(0, 4).map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="bg-white/90 text-black px-2 py-1 rounded text-xs"
+                    className="bg-white/90 text-black px-2 py-1 rounded-full text-xs font-medium"
                   >
                     {tech}
                   </span>
                 ))}
+                {project.technologies.length > 4 && (
+                  <span className="bg-white/70 text-black px-2 py-1 rounded-full text-xs font-medium">
+                    +{project.technologies.length - 4} more
+                  </span>
+                )}
               </motion.div>
 
               {/* Buttons */}
               <motion.div
-                className="flex gap-3"
+                className="flex flex-col sm:flex-row gap-2 sm:gap-3"
                 initial={{ y: 20, opacity: 0 }}
                 animate={
                   hoveredProject === index
@@ -154,7 +169,7 @@ export default function ProjectGallery() {
                 }
               >
                 {project.liveUrl && (
-                  <Button asChild variant="secondary" size="sm" className="gap-2">
+                  <Button asChild variant="secondary" size="sm" className="gap-2 flex-1 sm:flex-none">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
                       Live Demo
@@ -162,7 +177,7 @@ export default function ProjectGallery() {
                   </Button>
                 )}
                 {project.githubUrl && (
-                  <Button asChild variant="outline" size="sm" className="gap-2 border-white text-white hover:bg-white hover:text-black">
+                  <Button asChild variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none border-white text-white hover:bg-white hover:text-black">
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="h-4 w-4" />
                       GitHub
