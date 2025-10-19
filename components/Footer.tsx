@@ -149,9 +149,9 @@ export default function Footer() {
               className="space-y-2 opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
-              <p className="text-sm sm:text-base">Email: aiman@example.com</p>
-              <p className="text-sm sm:text-base">Phone: +1 (555) 123-4567</p>
-              <p className="text-sm sm:text-base">Location: Your City, Country</p>
+              <p className="text-sm sm:text-base">Email: ausiaam83@gmail.com</p>
+              <p className="text-sm sm:text-base">Phone: +8801538288739</p>
+              <p className="text-sm sm:text-base">Location: Mirsarai, Chattogram</p>
             </div>
           </div>
         </div>
