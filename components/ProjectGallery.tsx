@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { ExternalLink, Eye } from 'lucide-react';
 import { projects } from '../data/projects';
-import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 
 interface ProjectGalleryProps {
@@ -13,13 +11,6 @@ interface ProjectGalleryProps {
 
 export default function ProjectGallery({ onProjectClick }: ProjectGalleryProps) {
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  };
 
   return (
     <section

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { ExternalLink, Github, ArrowLeft, Calendar, Code } from 'lucide-react';
 import { projects } from '../data/projects';
@@ -169,7 +169,7 @@ export default function ProjectDetails({ projectId, onBack }: ProjectDetailsProp
               </h3>
               <div className="space-y-3">
                 {project.liveUrl && (
-                  <Button asChild variant="default" className="w-full gap-2 flex items-center justify-center">
+                  <Button variant="default" className="w-full gap-2 flex items-center justify-center">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <ExternalLink className="h-4 w-4 flex-shrink-0" />
                       <span className="whitespace-nowrap">View Live Demo</span>
@@ -177,7 +177,7 @@ export default function ProjectDetails({ projectId, onBack }: ProjectDetailsProp
                   </Button>
                 )}
                 {project.githubUrl && (
-                  <Button asChild variant="outline" className="w-full gap-2 flex items-center justify-center">
+                  <Button variant="outline" className="w-full gap-2 flex items-center justify-center">
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <Github className="h-4 w-4 flex-shrink-0" />
                       <span className="whitespace-nowrap">View Source Code</span>

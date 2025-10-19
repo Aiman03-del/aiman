@@ -98,7 +98,7 @@ export default function ContactSection() {
             className="text-lg max-w-2xl mx-auto font-light opacity-70"
             style={{ color: 'var(--foreground)' }}
           >
-            Let's create something extraordinary together. I'd love to hear about your idea or project!
+            Let&apos;s create something extraordinary together. I&apos;d love to hear about your idea or project!
           </p>
         </motion.div>
 
@@ -126,7 +126,7 @@ export default function ContactSection() {
                 className="text-2xl font-serif font-semibold mb-8"
                 style={{ color: 'var(--foreground)' }}
               >
-                Let's Connect
+                Let&apos;s Connect
               </h3>
               
               <div className="space-y-6">
@@ -342,7 +342,7 @@ export default function ContactSection() {
             >
               Sometimes a chat works best. Book a free 15-minute consultation today.
             </p>
-            <Button asChild variant="default" size="lg">
+            <Button variant="default" size="lg">
               <a href="#contact">Schedule a Call</a>
             </Button>
           </div>
