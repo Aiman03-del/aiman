@@ -25,13 +25,13 @@ export default function ContactSection() {
     console.log("Form submitted:", formData);
   };
 
-  const fadeInUp = () => ({
+  const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
     }
-  });
+  };
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-100 text-gray-900 overflow-hidden">
@@ -42,7 +42,7 @@ export default function ContactSection() {
           className="text-center mb-12"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp()}
+          variants={fadeInUp}
           transition={{ delay: 0, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
@@ -58,7 +58,7 @@ export default function ContactSection() {
           className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp()}
+          variants={fadeInUp}
           transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
@@ -87,7 +87,7 @@ export default function ContactSection() {
             className="space-y-12"
             initial="hidden"
             whileInView="visible"
-            variants={fadeInUp()}
+            variants={fadeInUp}
             transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
@@ -146,7 +146,7 @@ export default function ContactSection() {
             className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
             initial="hidden"
             whileInView="visible"
-            variants={fadeInUp()}
+            variants={fadeInUp}
             transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
@@ -222,7 +222,7 @@ export default function ContactSection() {
           className="text-center mt-20"
           initial="hidden"
           whileInView="visible"
-          variants={fadeInUp()}
+          variants={fadeInUp}
           transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
