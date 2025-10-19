@@ -43,24 +43,24 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="py-20 min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-300"
+      className="py-12 sm:py-16 md:py-20 min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-300"
       style={{
         background: 'var(--background)',
         color: 'var(--foreground)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 w-full relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative">
         <div className="flex flex-col lg:flex-row items-center justify-center relative">
 
-          {/* Left Text */}
+          {/* Left Text - Hidden on mobile, visible on larger screens */}
           <motion.div
-            className="absolute left-0 lg:left-12 z-10"
+            className="hidden lg:block absolute left-12 z-10"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 350, y: -100 }}
             transition={{ duration: 1.3, delay: 1.5 }}
           >
             <motion.h2
-              className="text-5xl lg:text-7xl font-serif font-bold"
+              className="text-7xl font-serif font-bold"
               style={{ color: 'var(--foreground)' }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -71,7 +71,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Center Image */}
-          <div className="flex justify-center items-center mb-8 lg:mb-0">
+          <div className="flex justify-center items-center mb-6 sm:mb-8 lg:mb-0">
             <motion.div
               className="relative"
               initial={{ scale: 1.1, opacity: 0 }}
@@ -79,7 +79,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.4 }}
             >
               <motion.div
-                className="w-64 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden"
+                className="w-48 h-60 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden"
                 animate={{
                   scale: [1, 0.98, 1],
                   rotate: [0, 0.4, 0],
@@ -104,15 +104,15 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Text */}
+          {/* Right Text - Hidden on mobile, visible on larger screens */}
           <motion.div
-            className="absolute right-0 lg:right-12 z-10"
+            className="hidden lg:block absolute right-12 z-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: -105, y: 100 }}
             transition={{ duration: 1.3, delay: 1.5 }}
           >
             <motion.h2
-              className="text-5xl lg:text-7xl font-mono font-bold"
+              className="text-7xl font-mono font-bold"
               style={{ color: 'var(--foreground)' }}
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -121,37 +121,59 @@ export default function Hero() {
               Developer
             </motion.h2>
           </motion.div>
+
+          {/* Mobile Text - Visible only on mobile and tablet */}
+          <div className="lg:hidden text-center mb-6">
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-2"
+              style={{ color: 'var(--foreground)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.1 }}
+            >
+              Web
+            </motion.h2>
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold"
+              style={{ color: 'var(--foreground)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.3 }}
+            >
+              Developer
+            </motion.h2>
+          </div>
         </div>
 
         {/* Bottom Content */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-12 sm:mt-16 md:mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 3.0 }}
         >
           <h1 
-            className="text-4xl md:text-5xl font-serif font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-3 sm:mb-4"
             style={{ color: 'var(--foreground)' }}
           >
             {displayedText}
             <span className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
           </h1>
           <p 
-            className="text-lg md:text-xl mb-8 max-w-2xl mx-auto font-light opacity-70"
+            className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto font-light opacity-70 px-4"
             style={{ color: 'var(--foreground)' }}
           >
             A passionate developer blending modern tech with timeless design.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="default">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <Button size="lg" variant="default" className="w-full sm:w-auto">
               <a href="#projects">
                 View My Work
               </a>
             </Button>
 
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
               <a href="#contact">
                 Get In Touch
               </a>
