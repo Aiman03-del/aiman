@@ -228,7 +228,7 @@ export default function ServicesSection() {
                 <ul className="space-y-3 mb-8 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                      <Check className="h-5 w-5 mr-3 flex-shrink-0" />
                       <span 
                         className="opacity-70"
                         style={{ color: 'var(--foreground)' }}

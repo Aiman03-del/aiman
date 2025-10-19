@@ -107,10 +107,12 @@ export default function Hero() {
               >
                 <Image
                   src="/images/profile.png"
-                  alt="Aiman - Developer"
+                  alt="Aiman Uddin Siam - Frontend Web Developer"
                   width={1000}
                   height={1000}
-                  quality={100}
+                  quality={90}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   priority
                   onLoad={() => setImageLoaded(true)}
@@ -183,9 +185,15 @@ export default function Hero() {
             <h1 
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-3 sm:mb-4"
               style={{ color: 'var(--foreground)' }}
+              aria-label="Hi, I'm Aiman"
             >
               {displayedText}
-              <span className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
+              <span 
+                className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+                aria-hidden="true"
+              >
+                |
+              </span>
             </h1>
             <p 
               className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto font-light opacity-70 px-4"
