@@ -269,19 +269,23 @@ export default function ContactSection() {
               </h4>
               <div className="flex space-x-4">
                 {[
-                  { icon: Twitter, label: "Twitter", href: "#" },
-                  { icon: Linkedin, label: "LinkedIn", href: "#" },
-                  { icon: Github, label: "GitHub", href: "#" }
+                  { icon: Twitter, label: "Twitter", href: "https://x.com/au_siaam" },
+                  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/au-siaam-721011204/" },
+                  { icon: Github, label: "GitHub", href: "https://github.com/Aiman03-del" }
                 ].map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.href}
-                    className="p-4 rounded-lg transition-all duration-300 group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-lg transition-all duration-300 group hover:opacity-100"
                     style={{
                       backgroundColor: 'var(--background)',
                       color: 'var(--foreground)',
                       opacity: 0.8
                     }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <social.icon className="h-6 w-6" />
                     <span className="sr-only">{social.label}</span>

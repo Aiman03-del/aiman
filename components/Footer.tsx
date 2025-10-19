@@ -60,22 +60,31 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a 
                 href="https://x.com/au_siaam" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
+                aria-label="Follow on Twitter"
               >
                 <Twitter className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a 
                 href="https://www.linkedin.com/in/au-siaam-721011204/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
+                aria-label="Connect on LinkedIn"
               >
                 <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a 
                 href="https://github.com/Aiman03-del" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-70 transition duration-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                 style={{ color: 'var(--foreground)' }}
+                aria-label="View GitHub Profile"
               >
                 <Github className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
