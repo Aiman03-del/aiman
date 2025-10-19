@@ -161,7 +161,7 @@ export default function Navbar() {
             </motion.button>
 
             {/* My Resume Button */}
-            <Button asChild variant="default" size="sm">
+            <Button variant="default" size="sm">
             <a 
               href="https://drive.google.com/file/d/1fQ1pCAnayziyGm7ad3CIwDZEMXlrWmqq/view?usp=sharing" 
               target="_blank" 

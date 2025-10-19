@@ -15,8 +15,8 @@ export default function AboutSection() {
   const imageScale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1.7, 1.45, 1.2, 1.1]);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       className="py-20 overflow-hidden transition-colors duration-300"
       style={{
         background: 'var(--background)',
@@ -33,14 +33,14 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div 
+          <div
             className="inline-block border rounded-full px-6 py-2 shadow-sm"
             style={{
               borderColor: 'var(--foreground)',
               backgroundColor: 'var(--background)'
             }}
           >
-            <h3 
+            <h3
               className="text-sm uppercase tracking-[0.2em] font-medium opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
@@ -94,27 +94,27 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="pl-6"
           >
-            <h3 
+            <h3
               className="text-2xl font-serif font-semibold mb-3"
               style={{ color: 'var(--foreground)' }}
             >
               My Story
             </h3>
             Hey there  I&apos;m <span className="font-semibold">Ayman Uddin Siam</span> — a passionate{" "}
-          <span className="font-semibold">Frontend Web Developer</span> from Bangladesh, currently working at{" "}
-          <span className="font-semibold">Growthly IT</span>. My journey didn’t start with a computer science degree —
-          it started with pure curiosity and endless nights of exploring how the web really works.  
-          <br /> 
-          {/* After completing my SSC in Science, I joined the Navy, which taught me discipline, focus, and respect for
+            <span className="font-semibold">Frontend Web Developer</span> from Bangladesh, currently working at{" "}
+            <span className="font-semibold">Growthly IT</span>. My journey didn’t start with a computer science degree —
+            it started with pure curiosity and endless nights of exploring how the web really works.
+            <br />
+            {/* After completing my SSC in Science, I joined the Navy, which taught me discipline, focus, and respect for
           structure — traits I still carry into my coding life today. Later, I shifted my path into the world of web
           development, where I found my true calling.   */}
-          <br />
-          I started with HTML and CSS, fell in love with React, and eventually built projects using{" "}
-          <span className="font-semibold">MERN stack, NestJS, and TypeScript</span>. I value clean design,
-          performance, and user-first experiences — blending traditional craftsmanship with modern tools.  
-          <br /> <br />
-          Now, every project I build isn’t just code — it’s a reflection of my story, my discipline, and my belief that
-          growth comes from patience, persistence, and purpose.
+            <br />
+            I started with HTML and CSS, fell in love with React, and eventually built projects using{" "}
+            <span className="font-semibold">MERN stack, NestJS, and TypeScript</span>. I value clean design,
+            performance, and user-first experiences — blending traditional craftsmanship with modern tools.
+            <br /> <br />
+            Now, every project I build isn’t just code — it’s a reflection of my story, my discipline, and my belief that
+            growth comes from patience, persistence, and purpose.
           </motion.div>
 
           {/* Technologies */}
@@ -124,7 +124,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 
+            <h3
               className="text-2xl font-serif font-semibold mb-6"
               style={{ color: 'var(--foreground)' }}
             >
@@ -133,11 +133,11 @@ export default function AboutSection() {
 
             <div className="relative overflow-hidden py-4">
               {/* Faded edges */}
-              <div 
+              <div
                 className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r to-transparent z-10"
                 style={{ background: `linear-gradient(to right, var(--background), transparent)` }}
               ></div>
-              <div 
+              <div
                 className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l to-transparent z-10"
                 style={{ background: `linear-gradient(to left, var(--background), transparent)` }}
               ></div>
@@ -187,7 +187,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-3 mb-4">
-              <div 
+              <div
                 className="p-2 rounded-lg"
                 style={{
                   backgroundColor: 'var(--foreground)',
@@ -196,14 +196,14 @@ export default function AboutSection() {
               >
                 <Heart className="h-5 w-5" />
               </div>
-              <h3 
+              <h3
                 className="text-xl font-serif font-semibold"
                 style={{ color: 'var(--foreground)' }}
               >
                 What Drives Me
               </h3>
             </div>
-            <p 
+            <p
               className="leading-relaxed opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
@@ -219,8 +219,9 @@ export default function AboutSection() {
                 <Image
                   src="/images/profile.png"
                   alt="Aiman - Developer"
-                  width={320}
-                  height={384}
+                  width={1000}
+                  height={1000}
+                  quality={100}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>

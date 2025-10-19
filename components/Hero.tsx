@@ -93,8 +93,9 @@ export default function Hero() {
                 <Image
                   src="/images/profile.png"
                   alt="Aiman - Developer"
-                  width={320}
-                  height={384}
+                  width={1000}
+                  height={1000}
+                  quality={100}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   priority
                 />
@@ -144,13 +145,13 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="default">
+            <Button size="lg" variant="default">
               <a href="#projects">
                 View My Work
               </a>
             </Button>
 
-            <Button asChild size="lg" variant="outline">
+            <Button size="lg" variant="outline">
               <a href="#contact">
                 Get In Touch
               </a>

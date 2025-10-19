@@ -131,7 +131,7 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
               {/* Project Links */}
               <div className="flex flex-col sm:flex-row gap-4">
                 {project.liveUrl && (
-                  <Button asChild variant="default" className="flex-1 gap-2">
+                  <Button variant="default" className="flex-1 gap-2">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       <ExternalLink className="h-4 w-4 flex-shrink-0" />
                       <span className="whitespace-nowrap">View Live Demo</span>
@@ -139,7 +139,7 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
                   </Button>
                 )}
                 {project.githubUrl && (
-                  <Button asChild variant="outline" className="flex-1 gap-2">
+                  <Button variant="outline" className="flex-1 gap-2">
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       <Github className="h-4 w-4 flex-shrink-0" />
                       <span className="whitespace-nowrap">View Source Code</span>

@@ -334,10 +334,10 @@ export default function ServicesSection() {
             All projects include free consultation and detailed project planning.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="default" size="lg">
+            <Button variant="default" size="lg">
               <a href="#contact">Get Free Quote</a>
             </Button>
-            <Button asChild variant="default" size="lg">
+            <Button variant="default" size="lg">
               <a href="#projects">View Portfolio</a>
             </Button>
           </div>
