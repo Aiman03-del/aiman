@@ -1,15 +1,53 @@
 'use client';
 
-import { Code, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from './ui/button';
+import { useState, useEffect } from 'react';
 
 export default function Hero() {
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const fullText = "Hi, I'm Aiman";
+  const typingSpeed = 100; // milliseconds per character
+  const startDelay = 3500; // Start typing after 3.5 seconds to sync with existing animations
+
+  useEffect(() => {
+    // Start typing after delay
+    const startTimer = setTimeout(() => {
+      let currentIndex = 0;
+      const typingTimer = setInterval(() => {
+        if (currentIndex <= fullText.length) {
+          setDisplayedText(fullText.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(typingTimer);
+        }
+      }, typingSpeed);
+
+      return () => clearInterval(typingTimer);
+    }, startDelay);
+
+    return () => clearTimeout(startTimer);
+  }, []);
+
+  // Cursor blinking effect
+  useEffect(() => {
+    const cursorTimer = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+
+    return () => clearInterval(cursorTimer);
+  }, []);
+
   return (
     <section
       id="home"
-      className="py-20 bg-gradient-to-b from-gray-100 via-white to-gray-100 text-black min-h-screen flex items-center justify-center overflow-hidden"
+      className="py-20 min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-300"
+      style={{
+        background: 'var(--background)',
+        color: 'var(--foreground)'
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 w-full relative">
         <div className="flex flex-col lg:flex-row items-center justify-center relative">
@@ -22,7 +60,8 @@ export default function Hero() {
             transition={{ duration: 1.3, delay: 1.5 }}
           >
             <motion.h2
-              className="text-5xl lg:text-7xl font-serif font-bold text-black"
+              className="text-5xl lg:text-7xl font-serif font-bold"
+              style={{ color: 'var(--foreground)' }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 2.1 }}
@@ -72,7 +111,8 @@ export default function Hero() {
             transition={{ duration: 1.3, delay: 1.5 }}
           >
             <motion.h2
-              className="text-5xl lg:text-7xl font-mono font-bold text-black"
+              className="text-5xl lg:text-7xl font-mono font-bold"
+              style={{ color: 'var(--foreground)' }}
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 2.3 }}
@@ -89,24 +129,29 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 3.0 }}
         >
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-black">
-            Hi, I&apos;m Aiman
+          <h1 
+            className="text-4xl md:text-5xl font-serif font-bold mb-4"
+            style={{ color: 'var(--foreground)' }}
+          >
+            {displayedText}
+            <span className={`transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}>|</span>
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-700 font-light">
+          <p 
+            className="text-lg md:text-xl mb-8 max-w-2xl mx-auto font-light opacity-70"
+            style={{ color: 'var(--foreground)' }}
+          >
             A passionate developer blending modern tech with timeless design.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="default" className="gap-2">
+            <Button asChild size="lg" variant="default">
               <a href="#projects">
-                <Code className="h-5 w-5" />
                 View My Work
               </a>
             </Button>
 
-            <Button asChild size="lg" variant="outline" className="gap-2">
+            <Button asChild size="lg" variant="outline">
               <a href="#contact">
-                <Mail className="h-5 w-5" />
                 Get In Touch
               </a>
             </Button>

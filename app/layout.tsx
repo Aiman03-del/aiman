@@ -1,6 +1,10 @@
+'use client';
+
 import { Inter, Playfair_Display } from "next/font/google";
 import "../styles/globals.css";
 import CustomCursor from "../components/CustomCursor";
+import { ThemeProvider, useTheme } from "../components/ThemeContext";
+import PageFlipAnimation from "../components/PageFlipAnimation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,6 +18,20 @@ const playfairDisplay = Playfair_Display({
   weight: ["500", "700"],
 });
 
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const { isAnimating, animationComplete } = useTheme();
+  
+  return (
+    <PageFlipAnimation 
+      isAnimating={isAnimating} 
+      onAnimationComplete={animationComplete}
+    >
+      <CustomCursor />
+      {children}
+    </PageFlipAnimation>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,11 +44,18 @@ export default function RootLayout({
         <meta name="description" content="A passionate developer creating amazing digital experiences" />
       </head>
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} antialiased bg-white text-black`}
+        className={`${inter.variable} ${playfairDisplay.variable} antialiased transition-colors duration-300`}
+        style={{
+          backgroundColor: 'var(--background)',
+          color: 'var(--foreground)'
+        }}
         suppressHydrationWarning={true}
       >
-        <CustomCursor />
-        {children}
+        <ThemeProvider>
+          <LayoutContent>
+            {children}
+          </LayoutContent>
+        </ThemeProvider>
       </body>
     </html>
   );

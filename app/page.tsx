@@ -3,7 +3,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutSection from '../components/AboutSection';
-import ProjectGallery from '../components/ProjectGallery';
+import ProjectsContainer from '../components/ProjectsContainer';
 import ServicesSection from '../components/ServicesSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -21,12 +21,12 @@ export default function Home() {
       <AboutSection />
       
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white text-black">
-        <ProjectGallery />
+      <section id="projects">
+        <ProjectsContainer />
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white text-black">
+      <section id="services">
         <ServicesSection />
       </section>
 

@@ -2,13 +2,16 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
 import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 
-export default function ProjectGallery() {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+interface ProjectGalleryProps {
+  onProjectClick: (projectId: string) => void;
+}
+
+export default function ProjectGallery({ onProjectClick }: ProjectGalleryProps) {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -19,177 +22,101 @@ export default function ProjectGallery() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section
+      id="projects"
+      className="py-20"
+    >
       <div className="max-w-7xl mx-auto px-6">
-      {/* Header Badge */}
-      <motion.div
-        className="text-center mb-12"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="inline-block border border-gray-400 rounded-full px-6 py-2 bg-white shadow-sm">
-          <h3 className="text-sm uppercase tracking-[0.2em] text-gray-500 font-medium">
-            Projects Section
-          </h3>
+        {/* Header Badge */}
+        <div className="text-center mb-12">
+          <div className="inline-block border rounded-full px-6 py-2 shadow-sm">
+            <h3 className="text-sm uppercase tracking-[0.2em] font-medium opacity-70">
+              Projects Section
+            </h3>
+          </div>
         </div>
-      </motion.div>
 
-      {/* Title & Subtitle */}
-      <div className="text-center mb-16">
-        <motion.h2
-          className="text-4xl md:text-5xl font-serif font-bold text-black mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Featured Projects
-        </motion.h2>
+        {/* Title & Subtitle */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+            Featured Projects
+          </h2>
 
-        <motion.div
-          className="w-20 h-[2px] bg-black mx-auto mb-6"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        />
+          <div className="w-20 h-[2px] mx-auto mb-6" />
 
-        <motion.p
-          className="text-lg text-gray-700 max-w-2xl mx-auto font-light"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          Hover over a project to explore the details and see what I’ve built.
-        </motion.p>
-      </div>
+          <p className="text-lg max-w-2xl mx-auto font-light opacity-70">
+            Hover over projects to see options - view details or visit live site.
+          </p>
+        </div>
 
-      {/* Project Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            custom={index}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-            onMouseEnter={() => setHoveredProject(index)}
-            onMouseLeave={() => setHoveredProject(null)}
-            role="button"
-            tabIndex={0}
-            aria-label={`View ${project.title} project details`}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                setHoveredProject(hoveredProject === index ? null : index);
-              }
-            }}
-          >
-            {/* Project Image */}
-            <div className="relative h-80 w-full overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={index < 2}
-              />
-            </div>
-
-            {/* Overlay with Animation */}
-            <motion.div
-              className={`absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-end p-6 transition-all duration-500 ${
-                hoveredProject === index
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
+        {/* Project Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className="group relative"
             >
-              <motion.h3
-                className="text-2xl font-bold text-white mb-3 leading-tight"
-                initial={{ y: 20, opacity: 0 }}
-                animate={
-                  hoveredProject === index
-                    ? { y: 0, opacity: 1, transition: { delay: 0.2 } }
-                    : {}
-                }
-              >
-                {project.title}
-              </motion.h3>
+              {/* Project Image */}
+              <div className="relative h-64 w-full overflow-hidden rounded-xl  hover:opacity-50">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                  priority={index < 2}
+                />
 
-              <motion.p
-                className="text-gray-200 mb-4 text-sm leading-relaxed line-clamp-3"
-                initial={{ y: 20, opacity: 0 }}
-                animate={
-                  hoveredProject === index
-                    ? { y: 0, opacity: 1, transition: { delay: 0.3 } }
-                    : {}
-                }
-              >
-                {project.description}
-              </motion.p>
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-all duration-300"></div>
 
-              <motion.div
-                className="flex flex-wrap gap-2 mb-4"
-                initial={{ y: 20, opacity: 0 }}
-                animate={
-                  hoveredProject === index
-                    ? { y: 0, opacity: 1, transition: { delay: 0.4 } }
-                    : {}
-                }
-              >
-                {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="bg-white/90 text-black px-2 py-1 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {project.technologies.length > 4 && (
-                  <span className="bg-white/70 text-black px-2 py-1 rounded-full text-xs font-medium">
-                    +{project.technologies.length - 4} more
-                  </span>
-                )}
-              </motion.div>
 
-              {/* Buttons */}
-              <motion.div
-                className="flex flex-col sm:flex-row gap-2 sm:gap-3"
-                initial={{ y: 20, opacity: 0 }}
-                animate={
-                  hoveredProject === index
-                    ? { y: 0, opacity: 1, transition: { delay: 0.5 } }
-                    : {}
-                }
-              >
-                {project.liveUrl && (
-                  <Button asChild variant="secondary" size="sm" className="gap-2 flex-1 sm:flex-none">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" />
-                      Live Demo
-                    </a>
-                  </Button>
-                )}
-                {project.githubUrl && (
-                  <Button asChild variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none border-white text-white hover:bg-white hover:text-black">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4" />
-                      GitHub
-                    </a>
-                  </Button>
-                )}
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        ))}
-      </div>
+              </div>
+              {/* Card Content - Initially hidden, shown on hover */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Project Name - Left Side */}
+                  <div className="flex items-end">
+                    <h3 className="text-lg font-medium">
+                      {project.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Buttons Grid - Right Side */}
+                  <div className="grid grid-rows-2 gap-2">
+                    {/* Visit Button - Top */}
+                    {project.liveUrl && (
+                      <Button
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                        size="sm"
+                        variant="default"
+                        className="p-2 rounded-full flex items-center justify-center gap-2"
+                        aria-label={`Open ${project.title} live site`}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        <span className="text-sm font-medium">Visit</span>
+                      </Button>
+                    )}
+                    
+                    {/* View Button - Bottom */}
+                    <Button
+                      onClick={() => onProjectClick(project.id)}
+                      size="sm"
+                      variant="outline"
+                      className="p-2 border-none rounded-full flex items-center justify-center gap-2"
+                      aria-label={`View ${project.title} details`}
+                    >
+                      <Eye className="h-4 w-4" />
+                      <span className="text-sm font-medium">View</span>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+

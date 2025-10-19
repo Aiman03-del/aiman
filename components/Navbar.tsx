@@ -2,14 +2,25 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import Image from 'next/image';
+import { useTheme } from './ThemeContext';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  
+  // Only use theme after component is mounted to avoid hydration issues
+  const themeContext = useTheme();
+  const { theme, toggleTheme } = mounted ? themeContext : { theme: 'light', toggleTheme: () => {} };
+
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close modal when clicking outside or pressing escape
   useEffect(() => {
@@ -34,29 +45,50 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50 text-black">
+    <nav 
+      className="shadow-lg fixed w-full top-0 z-50 transition-colors duration-300"
+      style={{
+        backgroundColor: 'var(--background)',
+        color: 'var(--foreground)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo - Left */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center" data-cursor-hover>
-              <Image
-                src="/images/logo.png"
-                alt="Aiman Logo"
-                width={80}
-                height={80}
-                className="w-20 h-20 hover:opacity-80 transition-opacity duration-300"
-                quality={100}
-                priority
-              />
+              {mounted && (
+                <Image
+                  src={theme === 'light' ? "/images/logo.png" : "/images/light-logo.png"}
+                  alt="Aiman Logo"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 hover:opacity-80 transition-opacity duration-300"
+                  quality={100}
+                  priority
+                />
+              )}
+              {!mounted && (
+                <Image
+                  src="/images/light-logo.png"
+                  alt="Aiman Logo"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 hover:opacity-80 transition-opacity duration-300"
+                  quality={100}
+                  priority
+                />
+              )}
             </Link>
           </div>
           
-          {/* Menu toggle button - Center */}
+          {/* Menu button - Center */}
           <div className="flex items-center">
+            {/* Menu toggle button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-black hover:text-gray-600 focus:outline-none focus:text-gray-600"
+              className="hover:opacity-70 focus:outline-none transition-opacity duration-200"
+              style={{ color: 'var(--foreground)' }}
               data-cursor-hover
             >
               <div className="relative w-6 h-6">
@@ -87,8 +119,48 @@ export default function Navbar() {
             </motion.button>
           </div>
           
-          {/* My Resume - Right */}
-          <div className="flex items-center">
+          {/* Theme toggle and My Resume - Right */}
+          <div className="flex items-center space-x-4">
+            {/* Theme Toggle Button */}
+            <motion.button
+              onClick={toggleTheme}
+              className="hover:opacity-70 focus:outline-none transition-opacity duration-200"
+              style={{ color: 'var(--foreground)' }}
+              data-cursor-hover
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="relative w-6 h-6">
+                {mounted && (
+                  <AnimatePresence mode="wait">
+                    {theme === 'light' ? (
+                      <motion.div
+                        key="moon"
+                        initial={{ opacity: 0, rotate: -90 }}
+                        animate={{ opacity: 1, rotate: 0 }}
+                        exit={{ opacity: 0, rotate: 90 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                      >
+                        <Moon className="h-6 w-6" />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="sun"
+                        initial={{ opacity: 0, rotate: -90 }}
+                        animate={{ opacity: 1, rotate: 0 }}
+                        exit={{ opacity: 0, rotate: 90 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                      >
+                        <Sun className="h-6 w-6" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+                {!mounted && <Sun className="h-6 w-6" />}
+              </div>
+            </motion.button>
+
+            {/* My Resume Button */}
             <Button asChild variant="default" size="sm">
             <a 
               href="https://drive.google.com/file/d/1fQ1pCAnayziyGm7ad3CIwDZEMXlrWmqq/view?usp=sharing" 
@@ -107,7 +179,8 @@ export default function Navbar() {
           {isMenuOpen && (
             <motion.div 
               ref={modalRef}
-              className="fixed inset-0 z-50 bg-white"
+              className="fixed inset-0 z-50 transition-colors duration-300"
+              style={{ backgroundColor: 'var(--background)' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -125,7 +198,8 @@ export default function Navbar() {
                 {/* Close Button */}
                 <motion.button
                   onClick={() => setIsMenuOpen(false)}
-                  className="absolute top-8 left-1/2 transform -translate-x-1/2 p-3  text-black rounded-full transition-all duration-300"
+                  className="absolute top-8 left-1/2 transform -translate-x-1/2 p-3 rounded-full transition-all duration-300"
+                  style={{ color: 'var(--foreground)' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
@@ -136,7 +210,8 @@ export default function Navbar() {
                 <motion.a 
                   href="#home" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
+                  className="text-4xl md:text-6xl font-bold hover:opacity-70 transition-opacity duration-200"
+                  style={{ color: 'var(--foreground)' }}
                   whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
@@ -151,7 +226,8 @@ export default function Navbar() {
                 <motion.a 
                   href="#about" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
+                  className="text-4xl md:text-6xl font-bold hover:opacity-70 transition-opacity duration-200"
+                  style={{ color: 'var(--foreground)' }}
                   whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
@@ -166,7 +242,8 @@ export default function Navbar() {
                 <motion.a 
                   href="#projects" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
+                  className="text-4xl md:text-6xl font-bold hover:opacity-70 transition-opacity duration-200"
+                  style={{ color: 'var(--foreground)' }}
                   whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
@@ -181,7 +258,8 @@ export default function Navbar() {
                 <motion.a 
                   href="#services"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
+                  className="text-4xl md:text-6xl font-bold hover:opacity-70 transition-opacity duration-200"
+                  style={{ color: 'var(--foreground)' }}
                   whileHover={{ 
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }
@@ -196,7 +274,8 @@ export default function Navbar() {
                 <motion.a
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl md:text-6xl font-bold text-black hover:text-gray-600"
+                  className="text-4xl md:text-6xl font-bold hover:opacity-70 transition-opacity duration-200"
+                  style={{ color: 'var(--foreground)' }}
                   whileHover={{
                     letterSpacing: "0.1em",
                     transition: { duration: 0.2 }

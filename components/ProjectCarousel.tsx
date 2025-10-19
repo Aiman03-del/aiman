@@ -54,19 +54,19 @@ export default function ProjectCarousel() {
   return (
     <div className="w-full max-w-8xl mx-auto px-8 py-12">
       <div className="flex items-center justify-between mb-12">
-        <h2 className="text-3xl font-bold text-black dark:text-white">
+        <h2 className="text-3xl font-bold">
           Featured Projects
         </h2>
         <div className="flex gap-2">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300"
+            className="p-2 rounded-full transition duration-300"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300"
+            className="p-2 rounded-full transition duration-300"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -142,8 +142,8 @@ export default function ProjectCarousel() {
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition duration-300 ${
               index === currentIndex
-                ? 'bg-black dark:bg-white'
-                : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                ? ''
+                : 'opacity-50'
             }`}
           />
         ))}

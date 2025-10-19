@@ -180,3 +180,16 @@ select,
 .dark .project-card:hover {
   box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
 }
+
+/* 3D Perspective for Page Flip Animation */
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Full site page flip animation */
+.page-flip-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}

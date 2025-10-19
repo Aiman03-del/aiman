@@ -11,7 +11,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "1",
-    title: "Healers - Mental Health Support Platform",
+    title: "Healers - Music Streaming Platform",
     description: "A mental health awareness and therapy booking platform where users can connect with certified therapists, explore resources, and schedule online sessions securely.",
     image: "/images/healers.png",
     technologies: ["React", "Tailwind CSS", "Firebase", "Node.js"],

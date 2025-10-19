@@ -34,7 +34,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-100 text-gray-900 overflow-hidden">
+    <section 
+      id="contact" 
+      className="py-20 overflow-hidden transition-colors duration-300"
+      style={{
+        background: 'var(--background)',
+        color: 'var(--foreground)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header Badge */}
@@ -46,8 +53,17 @@ export default function ContactSection() {
           transition={{ delay: 0, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div className="inline-block border border-gray-400 rounded-full px-6 py-2 bg-white shadow-sm">
-            <h3 className="text-sm uppercase tracking-[0.2em] text-gray-500 font-medium">
+          <div 
+            className="inline-block border rounded-full px-6 py-2 shadow-sm"
+            style={{
+              borderColor: 'var(--foreground)',
+              backgroundColor: 'var(--background)'
+            }}
+          >
+            <h3 
+              className="text-sm uppercase tracking-[0.2em] font-medium opacity-70"
+              style={{ color: 'var(--foreground)' }}
+            >
               Contact Section
             </h3>
           </div>
@@ -62,20 +78,27 @@ export default function ContactSection() {
           transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">
+          <h2 
+            className="text-4xl md:text-5xl font-serif font-bold mb-4"
+            style={{ color: 'var(--foreground)' }}
+          >
             Get In Touch
           </h2>
 
           <motion.div
-            className="w-20 h-[2px] bg-black mx-auto mb-6"
+            className="w-20 h-[2px] mx-auto mb-6"
+            style={{ backgroundColor: 'var(--foreground)' }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           />
 
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto font-light">
-            Let’s create something extraordinary together. I’d love to hear about your idea or project!
+          <p 
+            className="text-lg max-w-2xl mx-auto font-light opacity-70"
+            style={{ color: 'var(--foreground)' }}
+          >
+            Let's create something extraordinary together. I'd love to hear about your idea or project!
           </p>
         </motion.div>
 
@@ -92,8 +115,19 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             {/* Contact Info */}
-            <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-2xl font-serif font-semibold text-black mb-8">Let’s Connect</h3>
+            <div 
+              className="backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
+              style={{
+                backgroundColor: 'var(--background)',
+                opacity: 0.9
+              }}
+            >
+              <h3 
+                className="text-2xl font-serif font-semibold mb-8"
+                style={{ color: 'var(--foreground)' }}
+              >
+                Let's Connect
+              </h3>
               
               <div className="space-y-6">
                 {[
@@ -107,12 +141,28 @@ export default function ContactSection() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="p-3 bg-black text-white rounded-lg mr-4 group-hover:bg-gray-800 transition-colors duration-300">
+                    <div 
+                      className="p-3 rounded-lg mr-4 transition-colors duration-300"
+                      style={{
+                        backgroundColor: 'var(--foreground)',
+                        color: 'var(--background)'
+                      }}
+                    >
                       <info.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">{info.label}</p>
-                      <p className="text-black font-medium">{info.value}</p>
+                      <p 
+                        className="text-sm opacity-70"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        {info.label}
+                      </p>
+                      <p 
+                        className="font-medium"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        {info.value}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -120,8 +170,19 @@ export default function ContactSection() {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h4 className="text-xl font-serif font-semibold text-black mb-6">Follow My Journey</h4>
+            <div 
+              className="backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
+              style={{
+                backgroundColor: 'var(--background)',
+                opacity: 0.9
+              }}
+            >
+              <h4 
+                className="text-xl font-serif font-semibold mb-6"
+                style={{ color: 'var(--foreground)' }}
+              >
+                Follow My Journey
+              </h4>
               <div className="flex space-x-4">
                 {[
                   { icon: Twitter, label: "Twitter", href: "#" },
@@ -131,7 +192,12 @@ export default function ContactSection() {
                   <motion.a
                     key={index}
                     href={social.href}
-                    className="p-4 bg-gray-100 hover:bg-black text-black hover:text-white rounded-lg transition-all duration-300 group"
+                    className="p-4 rounded-lg transition-all duration-300 group"
+                    style={{
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--foreground)',
+                      opacity: 0.8
+                    }}
                   >
                     <social.icon className="h-6 w-6" />
                     <span className="sr-only">{social.label}</span>
@@ -143,20 +209,34 @@ export default function ContactSection() {
 
           {/* Right Section - Form */}
           <motion.div
-            className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
+            style={{
+              backgroundColor: 'var(--background)',
+              borderColor: 'var(--foreground)',
+              opacity: 0.9
+            }}
             initial="hidden"
             whileInView="visible"
             variants={fadeInUp}
             transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-serif font-semibold text-black mb-8">Send a Message</h3>
+            <h3 
+              className="text-2xl font-serif font-semibold mb-8"
+              style={{ color: 'var(--foreground)' }}
+            >
+              Send a Message
+            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {["name", "email"].map((field) => (
                   <motion.div key={field} whileFocus={{ scale: 1.02 }}>
-                    <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
+                    <label 
+                      htmlFor={field} 
+                      className="block text-sm font-medium mb-2 capitalize"
+                      style={{ color: 'var(--foreground)' }}
+                    >
                       {field} *
                     </label>
                     <input
@@ -166,7 +246,11 @@ export default function ContactSection() {
                       value={formData[field as keyof typeof formData]}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                      style={{
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--foreground)'
+                      }}
                       placeholder={field === "email" ? "you@example.com" : "Your full name"}
                     />
                   </motion.div>
@@ -175,7 +259,11 @@ export default function ContactSection() {
 
               {["subject", "message"].map((field) => (
                 <motion.div key={field} whileFocus={{ scale: 1.02 }}>
-                  <label htmlFor={field} className="block text-sm font-medium text-black mb-2 capitalize">
+                  <label 
+                    htmlFor={field} 
+                    className="block text-sm font-medium mb-2  capitalize"
+                    style={{ color: 'var(--foreground)' }}
+                  >
                     {field} *
                   </label>
                   {field === "message" ? (
@@ -186,7 +274,11 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 resize-none"
+                      style={{
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--foreground)'
+                      }}
                       placeholder="Tell me about your project..."
                     />
                   ) : (
@@ -197,7 +289,11 @@ export default function ContactSection() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                      style={{
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--foreground)'
+                      }}
                       placeholder="What's this about?"
                     />
                   )}
@@ -226,14 +322,27 @@ export default function ContactSection() {
           transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h3 className="text-xl font-semibold text-black mb-4">
+          <div 
+            className="backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
+            style={{
+              backgroundColor: 'var(--background)',
+              borderColor: 'var(--foreground)',
+              opacity: 0.9
+            }}
+          >
+            <h3 
+              className="text-xl font-semibold mb-4"
+              style={{ color: 'var(--foreground)' }}
+            >
               Prefer a Quick Call?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p 
+              className="mb-6 opacity-70"
+              style={{ color: 'var(--foreground)' }}
+            >
               Sometimes a chat works best. Book a free 15-minute consultation today.
             </p>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="default" size="lg">
               <a href="#contact">Schedule a Call</a>
             </Button>
           </div>

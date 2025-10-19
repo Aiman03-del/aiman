@@ -26,7 +26,7 @@ export default function ProjectCard({
   
   return (
     <div 
-      className={`project-card bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-full flex flex-col ${
+      className={`project-card rounded-lg shadow-lg overflow-hidden border h-full flex flex-col ${
         isSideCard ? 'cursor-pointer' : ''
       }`}
       onClick={isSideCard ? onCardClick : undefined}
@@ -42,10 +42,10 @@ export default function ProjectCard({
       </div>
       
       <div className="p-6 flex flex-col h-full">
-        <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
+        <h3 className="text-xl font-semibold mb-2">
           {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1 overflow-hidden">
+        <p className="mb-4 flex-1 overflow-hidden">
           {description}
         </p>
         
@@ -53,7 +53,7 @@ export default function ProjectCard({
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="bg-black dark:bg-white text-white dark:text-black px-2 py-1 rounded text-sm"
+              className="px-2 py-1 rounded text-sm"
             >
               {tech}
             </span>
@@ -68,8 +68,8 @@ export default function ProjectCard({
               rel={isSideCard ? undefined : "noopener noreferrer"}
               className={`px-4 py-2 rounded flex items-center gap-2 ${
                 isSideCard 
-                  ? 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed' 
-                  : 'bg-black dark:bg-white text-white dark:text-black'
+                  ? 'cursor-not-allowed' 
+                  : ''
               }`}
               onClick={isSideCard ? (e) => e.preventDefault() : undefined}
             >
@@ -84,8 +84,8 @@ export default function ProjectCard({
               rel={isSideCard ? undefined : "noopener noreferrer"}
               className={`px-4 py-2 rounded flex items-center gap-2 ${
                 isSideCard 
-                  ? 'border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed' 
-                  : 'border border-black dark:border-white text-black dark:text-white'
+                  ? 'border cursor-not-allowed' 
+                  : 'border'
               }`}
               onClick={isSideCard ? (e) => e.preventDefault() : undefined}
             >
