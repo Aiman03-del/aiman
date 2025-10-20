@@ -101,7 +101,7 @@ export default function AboutSection() {
               My Story
             </h3>
             Hey there  I&apos;m <span className="font-semibold">Ayman Uddin Siam</span> — a passionate{" "}
-            <span className="font-semibold">Frontend Web Developer</span> from Bangladesh, currently working at{" "}
+            <span className="font-semibold">Full Stack Web Developer</span> from Bangladesh, currently working at{" "}
             <span className="font-semibold">Growthly IT</span>. My journey didn’t start with a computer science degree —
             it started with pure curiosity and endless nights of exploring how the web really works.
             <br />
