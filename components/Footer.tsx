@@ -19,7 +19,7 @@ export default function Footer() {
 
   return (
     <footer 
-      className="py-20 transition-colors duration-300"
+      className="pt-20 pb-10 transition-colors duration-300"
       style={{
         backgroundColor: 'var(--background)',
         color: 'var(--foreground)'

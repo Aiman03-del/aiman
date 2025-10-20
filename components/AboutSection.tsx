@@ -17,7 +17,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 overflow-hidden transition-colors duration-300"
+      className="overflow-hidden transition-colors duration-300"
       style={{
         background: 'var(--background)',
         color: 'var(--foreground)'
@@ -44,7 +44,7 @@ export default function AboutSection() {
               className="text-sm uppercase tracking-[0.2em] font-medium opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
-              About Section
+              My Story
             </h3>
           </div>
         </motion.div>

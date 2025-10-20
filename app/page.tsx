@@ -18,20 +18,26 @@ export default function Home() {
       <Navbar />
       <Stepper sections={sections} />
       <Hero />
-      <AboutSection />
+      
+      {/* About Section */}
+      <section className="py-8 md:py-16 lg:py-20">
+        <AboutSection />
+      </section>
       
       {/* Projects Section */}
-      <section id="projects">
+      <section id="projects" className="py-8 md:py-16 lg:py-20">
         <ProjectsContainer />
       </section>
 
       {/* Services Section */}
-      <section id="services">
+      <section id="services" className="py-8 md:py-16 lg:py-20">
         <ServicesSection />
       </section>
 
       {/* Contact Section */}
-      <ContactSection />
+      <section className="py-8 md:py-16 lg:py-20">
+        <ContactSection />
+      </section>
 
       <Footer />
     </>

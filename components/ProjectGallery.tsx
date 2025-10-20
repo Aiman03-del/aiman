@@ -36,7 +36,7 @@ export default function ProjectGallery({ onProjectClick }: ProjectGalleryProps) 
         <div className="text-center mb-12">
           <div className="inline-block border rounded-full px-6 py-2 shadow-sm">
             <h3 className="text-sm uppercase tracking-[0.2em] font-medium opacity-70">
-              Projects Section
+              My Work
             </h3>
           </div>
         </div>

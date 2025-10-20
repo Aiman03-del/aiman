@@ -118,9 +118,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section 
-      id="contact" 
-      className="py-20 overflow-hidden transition-colors duration-300"
+    <section
+      id="contact"
+      className="overflow-hidden transition-colors duration-300"
       style={{
         background: 'var(--background)',
         color: 'var(--foreground)'
@@ -144,11 +144,11 @@ export default function ContactSection() {
               backgroundColor: 'var(--background)'
             }}
           >
-            <h3 
+            <h3
               className="text-sm uppercase tracking-[0.2em] font-medium opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
-              Contact Section
+              Let's Connect
             </h3>
           </div>
         </motion.div>

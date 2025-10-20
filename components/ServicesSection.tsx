@@ -85,9 +85,9 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section 
-      id="services" 
-      className="py-20 transition-colors duration-300"
+    <section
+      id="services"
+      className="transition-colors duration-300"
       style={{
         background: 'var(--background)',
         color: 'var(--foreground)'
@@ -110,11 +110,11 @@ export default function ServicesSection() {
               backgroundColor: 'var(--background)'
             }}
           >
-            <h3 
+            <h3
               className="text-sm uppercase tracking-[0.2em] font-medium opacity-70"
               style={{ color: 'var(--foreground)' }}
             >
-              Services & Pricing
+              What I Offer
             </h3>
           </div>
         </motion.div>
