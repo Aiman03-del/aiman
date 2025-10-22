@@ -7,6 +7,7 @@ import { ThemeProvider, useTheme } from "../components/ThemeContext";
 import PageFlipAnimation from "../components/PageFlipAnimation";
 import ErrorBoundary from "../components/ErrorBoundary";
 import ScrollProgress from "../components/ScrollProgress";
+import ServiceWorkerRegistration from "../components/ServiceWorkerRegistration";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -67,6 +68,13 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://aiman-portfolio.vercel.app/" />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Aiman Portfolio" />
+        <link rel="apple-touch-icon" href="/images/logo.png" />
         <link rel="icon" href="/images/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/favicon.ico" />
         
@@ -85,6 +93,7 @@ export default function RootLayout({
         <ThemeProvider>
           <ErrorBoundary>
             <ScrollProgress />
+            <ServiceWorkerRegistration />
             <LayoutContent>
               {children}
             </LayoutContent>
