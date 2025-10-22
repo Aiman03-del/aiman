@@ -97,7 +97,7 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover"
+                className="object-cover grayscale"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 priority
               />
