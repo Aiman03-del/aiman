@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -33,7 +34,14 @@ export default function PageFlipAnimation({
     <div className="relative w-full h-full overflow-hidden">
       {/* Main Content */}
       <div className="w-full h-full">
-        {children}
+        {Array.isArray(children) 
+          ? children.map((child, index) => 
+              React.isValidElement(child) 
+                ? React.cloneElement(child, { key: child.key || `child-${index}` })
+                : child
+            )
+          : children
+        }
       </div>
 
       {/* Roll Overlay Animation */}

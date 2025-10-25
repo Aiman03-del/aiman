@@ -75,6 +75,7 @@ export default function ProjectGallery({ onProjectClick }: ProjectGalleryProps) 
                   src={project.image}
                   alt={project.title}
                   fill
+                  quality={85}
                   className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:opacity-40 grayscale"
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                   priority={index < 2}
